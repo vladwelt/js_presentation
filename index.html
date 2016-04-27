@@ -24,8 +24,187 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Advanced Javascript</h1>
+					<p>
+						<small>By <a>@vladwelt</a></small>
+						<small>Python and Javascript Developer</small>
+					</p>
+				</section>
+				<section>
+					<h2>Before we start ...</h2>
+				</section>
+				<section>
+					<section><h1>Objects</h1></section>
+					<section>
+						<h2>Javascript data types</h2>
+						<h3>Primitive</h3>
+						<ul>
+							<li class="fragment fade-up">numbers</li>
+							<li class="fragment fade-up">strings</li>
+							<li class="fragment fade-up">booleans</li>
+							<li class="fragment fade-up">null</li>
+							<li class="fragment fade-up">and undefined</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Javascript data types</h2>
+						<h3>Objects</h3>
+						<ul>
+							<li class="fragment fade-up">objects</li>
+						</ul>
+					</section>
+					<section>
+						<h2>What's an Object</h2>
+						<p>Objects in JavaScript are mutable keyed(key => value pairs) collections.</p>
+						<p>In JavaScript, arrays are objects, functions are objects, regular expressions are objects, and, of course, objects are objects.</p>
+					</section>
+					<section>
+						<h2>Object Literals</h2>
+						<section data-markdown>
+							<script type="text/template">
+								```
+									var flight = {
+										airline: "Oceanic",
+										number: 815,
+										departure: {
+											IATA: "SYD",
+											time: "2004-09-22 14:55",
+											city: "Sydney"
+										},
+										arrival: {
+											IATA: "LAX",
+											time: "2004-09-23 10:42",
+											city: "Los Angeles"
+										}
+									};
+								```
+							</script>
+						</section>
+					</section>
+					<section></section>
+				</section>
+                <section>
+                    <section><h2>Constructor</h2></section>
+                    <section>
+                        <h2>Constructor</h2>
+                        <section data-markdown>
+                            <script type="text/template">
+                                ```
+                                    var Person = function(name) {
+                                        this.name = name;
+                                        this.speaks = 'es';
+                                        this.say = function() {
+                                            return "Hola este es mi nombre " + this.name;
+                                        }
+                                    }
+                                ```
+                            </script>
+                        </section>
+                    </section>
+                    <section>
+                        <h2>An object created with constructor</h2>
+                        <section data-markdown>
+                            <script type="text/template">
+                                ```
+                                    var vlady = new Person("Vlady");
+                                    vlady.say(); //Hola este es mi nombre Vlady
+                                    // Anther object
+                                    var Person = function(name) {
+                                        this.name = "Vlady";
+                                        return {"last-name": "Cespedes"};
+                                    }
+                                    typeof new Person().name //"undefined"
+                                    typeof new Person()["last-name"] //"string"
+                                ```
+                            </script>
+                        </section>
+                    </section>
+                </section>
+				<section>
+                    <section><h2>Closure</h2></section>
+                    <section>
+                        <h2>Closure</h2>
+                        <section data-markdown>
+                            <script type="text/template">
+                                ```
+                                    var myObject = function () {
+                                        var value = 0;
+                                        return {
+                                            increment: function (inc) {
+                                                value += typeof inc === 'number' ? inc : 1;
+                                            },
+                                            getValue: function () {
+                                                return value;
+                                            }
+                                        };
+                                    }();
+                                ```
+                            </script>
+                        </section>
+                        <p>the function has access to the context in which it was created. This is called closure.</p>
+                    </section>
+                </section>
+				<section>
+                    <section>
+                        <h2>Inheritance</h2>
+                    </section>
+                    <section>
+                        <h2>Pseudoclassical</h2>
+                        <section data-markdown>
+                            <script type="text/template">
+                                ```
+                                    var Person = function (name) {
+                                        this.name = name;
+                                    };
+                                    Person.prototype.get_name = function () {
+                                        return this.name;
+                                    };
+                                    Person.prototype.say_name = function () {
+                                        return "Hi!, my name is " + this.name;
+                                    };
+                                    var myPerson = new Person('Vlady');
+                                    var myName = myPerson.get_name();
+                                ```
+                            </script>
+                        </section>
+                    </section>
+                    <section>
+                        <h2>Prototypal</h2>
+                        <section data-markdown>
+                            <script type="text/template">
+                                ```
+                                    var person = {
+                                        name : 'Vlady',
+                                        get_name : function () {
+                                            return this.name;
+                                        },
+                                        say_last_name : function () {
+                                            return "Hi!, my name is " + this.last_name;
+                                        }
+                                    };
+                                    var juan = Object.create(person);
+                                    juan.name = "Juan";
+                                    juan.last_name = "Cespedes";
+                                    juan.get_name = function ( ) {
+                                        return this.say_last_name() + ' ' + this.name;
+                                    };
+                                    
+                                ```
+                            </script>
+                        </section>
+                    </section>
+                </section>
+                <section>
+                    <h2>The JavaScript Trap</h2>
+                </section>
+                <section>
+                    <h2>References:</h2>
+                    <ul>
+                        <li>Javascript the good parts, Douglas Crockford</li>
+                        <li>JavaScript Patterns, Stoyan Stefanov</li>
+                    </ul>
+                </section>
 			</div>
 		</div>
 
